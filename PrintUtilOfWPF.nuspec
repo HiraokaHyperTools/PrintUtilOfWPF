@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>PrintUtilOfWPF</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>kenjiuno</authors>
+    <owners>kenjiuno</owners>
+    <projectUrl>https://github.com/HiraokaHyperTools/PrintUtilOfWPF</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Preview/Save XPS from your WPF Visual object.</description>
+    <releaseNotes>First release.</releaseNotes>
+    <copyright>Copyright 2017 HIRAOKA HYPER TOOLS, Inc.</copyright>
+    <tags>WPF XPS DocumentPaginator PrintUtil</tags>
+    <dependencies>
+      <group targetFramework="net40">
+      </group>
+    </dependencies>
+  </metadata>
+</package>
