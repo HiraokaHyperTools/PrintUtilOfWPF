@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -14,6 +15,8 @@ namespace PrintUtilOfWPF {
             InitializeComponent();
         }
 
+        public Action<PrintDialog> beforePrint = null;
+
         // http://stackoverflow.com/questions/588662/how-do-i-set-the-name-of-the-print-job-when-using-documentviewer-control
 
         public string JobTitle {
@@ -27,6 +30,9 @@ namespace PrintUtilOfWPF {
 
         private void Print_PreviewExecuted(object sender, ExecutedRoutedEventArgs e) {
             var printDialog = new PrintDialog();
+            if (beforePrint != null) {
+                beforePrint(printDialog);
+            }
             if (printDialog.ShowDialog() == true) {
                 printDialog.PrintDocument(documentViewer.Document.DocumentPaginator, JobTitle);
             }

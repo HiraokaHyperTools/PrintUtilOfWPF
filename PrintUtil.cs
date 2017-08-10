@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Xps.Packaging;
 
@@ -11,6 +12,17 @@ namespace PrintUtilOfWPF {
         ) {
             var window = new PrintPreviewWindow();
             window.JobTitle = jobTitle;
+            window.DoPreview(paginator);
+        }
+
+        public static void Preview(
+            String jobTitle,
+            DocumentPaginator paginator,
+            Action<PrintDialog> beforePrint
+        ) {
+            var window = new PrintPreviewWindow();
+            window.JobTitle = jobTitle;
+            window.beforePrint = beforePrint;
             window.DoPreview(paginator);
         }
 

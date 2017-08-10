@@ -13,7 +13,6 @@ namespace PrintUtilOfWPF {
 
         public PrintPages(List<DocumentPage> Pages) {
             this._Pages = Pages;
-            this._JobTitle = JobTitle;
         }
 
         public override DocumentPage GetPage(int pageNumber) {
