@@ -34,8 +34,7 @@ void testPrint() {
     pages.Add(new DocumentPage(page, a4Size, a4Rect, a4Rect));
 
     var printPages = new PrintPages(pages) {
-        PageSize = a4Size,
-        JobTitle = "testPage"
+        PageSize = a4Size
     };
 
     PrintUtil.Preview(printPages.JobTitle, printPages);
