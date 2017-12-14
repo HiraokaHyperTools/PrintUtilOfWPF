@@ -7,7 +7,8 @@ using System.Windows.Documents;
 
 namespace PrintUtilOfWPF {
     public class PrintPages : DocumentPaginator, IDocumentPaginatorSource {
-        List<DocumentPage> _Pages = new List<DocumentPage>();
+        private readonly List<DocumentPage> _Pages = new List<DocumentPage>();
+        private readonly Action<int> _OnGetPage;
         Size _PageSize;
         String _JobTitle;
 
@@ -15,7 +16,13 @@ namespace PrintUtilOfWPF {
             this._Pages = Pages;
         }
 
+        public PrintPages(List<DocumentPage> Pages, Action<int> OnGetPage) {
+            this._Pages = Pages;
+            this._OnGetPage = OnGetPage;
+        }
+
         public override DocumentPage GetPage(int pageNumber) {
+            _OnGetPage?.Invoke(pageNumber);
             return _Pages[pageNumber];
         }
 
