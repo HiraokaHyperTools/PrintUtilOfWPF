@@ -4,12 +4,15 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Xps.Packaging;
 
-namespace PrintUtilOfWPF {
-    public class PrintUtil {
+namespace PrintUtilOfWPF
+{
+    public class PrintUtil
+    {
         public static void Preview(
             String jobTitle,
             DocumentPaginator paginator
-        ) {
+        )
+        {
             var window = new PrintPreviewWindow();
             window.JobTitle = jobTitle;
             window.DoPreview(paginator);
@@ -19,7 +22,8 @@ namespace PrintUtilOfWPF {
             String jobTitle,
             DocumentPaginator paginator,
             Action<PrintDialog> beforePrint
-        ) {
+        )
+        {
             var window = new PrintPreviewWindow();
             window.JobTitle = jobTitle;
             window.beforePrint = beforePrint;
@@ -29,11 +33,14 @@ namespace PrintUtilOfWPF {
         public static void Save(
             String outputXpsFilePath,
             DocumentPaginator paginator
-        ) {
-            if (File.Exists(outputXpsFilePath)) {
+        )
+        {
+            if (File.Exists(outputXpsFilePath))
+            {
                 File.Delete(outputXpsFilePath);
             }
-            using (var document = new XpsDocument(outputXpsFilePath, FileAccess.ReadWrite)) {
+            using (var document = new XpsDocument(outputXpsFilePath, FileAccess.ReadWrite))
+            {
                 var writer = XpsDocument.CreateXpsDocumentWriter(document);
                 writer.Write(paginator);
             }
